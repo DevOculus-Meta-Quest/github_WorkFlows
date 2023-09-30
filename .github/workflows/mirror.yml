@@ -18,4 +18,4 @@ jobs:
           cd gitlab-repo
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
-          git push --force https://x-access-token:${{ secrets.GIT_ACTION }}@github.com/DevOculus-Meta-Quest/OpenComposite.git
+          git push --force https://x-access-token:${{ secrets.GIT_ACTIONS }}@github.com/DevOculus-Meta-Quest/OpenComposite.git
