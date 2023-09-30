@@ -1,0 +1,21 @@
+name: Mirror GitLab to GitHub
+
+on:
+  schedule:
+    - cron: '0 */12 * * *'  # Run every 12 hours
+  workflow_dispatch:  # Allows manual triggering
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone GitLab repository
+        run: |
+          git clone --mirror https://gitlab.com/znixian/OpenOVR.git gitlab-repo
+
+      - name: Push to GitHub
+        run: |
+          cd gitlab-repo
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git push --force https://x-access-token:${{ secrets.GIT_ACTION }}@github.com/DevOculus-Meta-Quest/OpenComposite.git
